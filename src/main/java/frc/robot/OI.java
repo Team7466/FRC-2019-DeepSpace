@@ -48,8 +48,7 @@ public class OI {
         // Trigger.whileHeld(new SideDriveCommand(1));
         A1.whenPressed(new SolenoidExpandCommand());
         X1.whenPressed(new SolenoidRetractCommand());
-        Y1.whenPressed(new MotorTestCommand(1));
-        B1.whenPressed(new MotorTestCommand(-1));
+
 
         /*
          * if (extreme.getPOV() == 0){ new ElevatorManuelCommand(1); } else
