@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
-// TODO
+// 
 public class RobotMap {
     public static WPI_VictorSPX leftfollower = new WPI_VictorSPX(2);
     public static WPI_VictorSPX leftmotor1 = new WPI_VictorSPX(1);
