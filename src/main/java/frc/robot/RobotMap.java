@@ -11,15 +11,14 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import jaci.pathfinder.PathfinderFRC;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.followers.EncoderFollower;
-import frc.robot.constants.Constants;
 public class RobotMap {
 
     //Pathfinder Configuration
-    /*public static Trajectory left_trajectory = PathfinderFRC.getTrajectory("example" + ".left");
-    public static Trajectory right_trajectory = PathfinderFRC.getTrajectory("example" + ".right");
+    public static Trajectory left_trajectory = PathfinderFRC.getTrajectory("Test"+".left");
+    public static Trajectory right_trajectory = PathfinderFRC.getTrajectory("Test"+".right");
     public static EncoderFollower leftencoderfollower = new EncoderFollower(left_trajectory);
     public static EncoderFollower rightencoderfollower = new EncoderFollower(left_trajectory);
-*/
+
     //Encoders Sensors&Other Usefull Devices
     public static SerialPort arduino = new SerialPort(9600,SerialPort.Port.kUSB1);
     public static Counter clawcounter = new Counter(new DigitalInput(1));

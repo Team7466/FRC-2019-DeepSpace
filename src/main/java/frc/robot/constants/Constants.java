@@ -8,12 +8,7 @@ public class Constants {
     public static final double k_wheel_diameter = 4.0 / 12.0;
     public static final double k_max_velocity = 10;
   
-    public static final int k_left_channel = 0;
-    public static final int k_right_channel = 1;
-
-    public static final int k_gyro_port = 0;
-  
-    public static final String k_path_name = "example";
+    public static final String k_path_name = "Test";
 
     /*PID Values*/
 

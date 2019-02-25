@@ -101,8 +101,8 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
-       
-/*
+       Notifier followernotifier = new Notifier(drivesystem::followPath);
+
        RobotMap.leftencoderfollower.configureEncoder(RobotMap.leftencoder.get(), Constants.k_ticks_per_rev,  Constants.k_wheel_diameter);
        // You must tune the PID values on the following line!
        RobotMap.leftencoderfollower.configurePIDVA(1.0, 0.0, 0.0, 1 / Constants.k_max_velocity, 0);
@@ -111,9 +111,10 @@ public class Robot extends TimedRobot {
        // You must tune the PID values on the following line!
        RobotMap.rightencoderfollower.configurePIDVA(1.0, 0.0, 0.0, 1 / Constants.k_max_velocity, 0);
 
-       //followernotifier.startPeriodic(RobotMap.left_trajectory.get(0).dt);
+       followernotifier.startPeriodic(RobotMap.left_trajectory.get(0).dt);
 
-       */
+
+       
     }
 
     @Override

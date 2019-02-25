@@ -21,7 +21,7 @@ public class DriveSystem extends Subsystem {
     public void drivefunc(Joystick joy, double speed) {
         drive(joy.getRawAxis(1) * -speed, joy.getRawAxis(5) * -speed);
     }
-    /*public void followPath() {
+    public void followPath() {
         Notifier followernotifier = new Notifier(this::followPath);
         if (RobotMap.leftencoderfollower.isFinished() || RobotMap.rightencoderfollower.isFinished()) {
             followernotifier.stop();
@@ -34,7 +34,8 @@ public class DriveSystem extends Subsystem {
           double turn =  0.8 * (-1.0/80.0) * heading_difference;
           RobotMap.leftmotor.set(leftspeed + turn);
           RobotMap.rightmotor.set(rightspeed - turn);
-    */
 
+}
+}
 }
       
