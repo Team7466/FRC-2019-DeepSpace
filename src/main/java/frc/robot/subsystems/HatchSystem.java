@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 import frc.robot.RobotMap;
-import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 public class HatchSystem extends Subsystem {

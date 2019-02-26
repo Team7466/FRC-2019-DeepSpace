@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import jaci.pathfinder.Trajectory;
 import frc.robot.subsystems.DriveSystem;
 import frc.robot.subsystems.HatchSystem;
 import frc.robot.subsystems.ReverseSystem;
@@ -17,12 +16,8 @@ import frc.robot.subsystems.ElevatorSystemPID;
 import frc.robot.subsystems.GripperClawPID;
 import frc.robot.subsystems.GripperSystem;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Notifier;
-import jaci.pathfinder.Pathfinder;
-import jaci.pathfinder.PathfinderFRC;
-import jaci.pathfinder.followers.EncoderFollower;
+
 
 // If you rename or move this class, update the build.properties file in the project root
 public class Robot extends TimedRobot {
@@ -111,7 +106,7 @@ public class Robot extends TimedRobot {
        // You must tune the PID values on the following line!
        RobotMap.rightencoderfollower.configurePIDVA(1.0, 0.0, 0.0, 1 / Constants.k_max_velocity, 0);
 
-       followernotifier.startPeriodic(RobotMap.left_trajectory.get(0).dt);
+       followernotifier.startPeriodic(RobotMap.left.get(0).dt);
 
 
        

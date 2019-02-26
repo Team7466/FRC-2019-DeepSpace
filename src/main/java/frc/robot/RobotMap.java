@@ -14,10 +14,12 @@ import jaci.pathfinder.followers.EncoderFollower;
 public class RobotMap {
 
     //Pathfinder Configuration
-    public static Trajectory left_trajectory = PathfinderFRC.getTrajectory("Test"+".left");
-    public static Trajectory right_trajectory = PathfinderFRC.getTrajectory("Test"+".right");
-    public static EncoderFollower leftencoderfollower = new EncoderFollower(left_trajectory);
-    public static EncoderFollower rightencoderfollower = new EncoderFollower(left_trajectory);
+    public static Trajectory left;
+    public static Trajectory right;
+    public static EncoderFollower leftencoderfollower;
+    public static EncoderFollower rightencoderfollower;
+
+
 
     //Encoders Sensors&Other Usefull Devices
     public static SerialPort arduino = new SerialPort(9600,SerialPort.Port.kUSB1);
@@ -46,4 +48,17 @@ public class RobotMap {
     public static DoubleSolenoid pushvalf = new DoubleSolenoid(2, 3);//Define the system to be used for hatch push
     public static Compressor compressor = new Compressor(1);
 
+
+    static{
+
+        try {
+            left = PathfinderFRC.getTrajectory("Test"+".left");
+            right = PathfinderFRC.getTrajectory("Test"+".right");
+            leftencoderfollower= new EncoderFollower(left);
+            rightencoderfollower = new EncoderFollower(right);
+        } catch (Exception e) {
+            System.out.println("Can't find path.");
+            e.printStackTrace();
+        }
+    }
 }
