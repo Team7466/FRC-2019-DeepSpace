@@ -34,7 +34,6 @@ public class DriveSystem extends Subsystem {
           double turn =  0.8 * (-1.0/80.0) * heading_difference;
           RobotMap.leftmotor.set(leftspeed + turn);
           RobotMap.rightmotor.set(rightspeed - turn);
-
 }
 }
 }
