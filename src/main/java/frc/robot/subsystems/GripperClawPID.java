@@ -8,7 +8,7 @@ public class GripperClawPID extends PIDSubsystem {
     public GripperClawPID() {
         super("Gripper Claw PID",Constants.Reverse_P, Constants.Reverse_I, Constants.Reverse_D);
         setAbsoluteTolerance(0.01);
-        getPIDController().setContinuous(true);
+        getPIDController().setContinuous(false);
         enable();
     }
 

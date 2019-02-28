@@ -80,7 +80,7 @@ public class Gyro
             
 			int rawRotation = (highOrder << 8) + lowOrder;
 			
-            rotation = (rawRotation / 131.0); 
+            rotation = (rawRotation / 131.0+2.9); 
             rotatedAmount = rotation*0.02; // 20ms constant loop, 131 is gyro scale factor
             if (rotatedAmount > 0.055 || rotatedAmount < -0.055) { // Filter out noise
                 angle += rotatedAmount; // angle in degrees

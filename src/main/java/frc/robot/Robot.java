@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveSystem;
 import frc.robot.subsystems.HatchSystem;
+import frc.robot.subsystems.LedControlSystem;
 import frc.robot.subsystems.ReverseSystem;
 import frc.robot.subsystems.ReverseSystemPID;
 import frc.robot.subsystems.ElevatorSystemPID;
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
     
     //Sensors
     public static Gyro gyro;
+    public static LedControlSystem ledcontrolsystem;
     public static int compressorSwitchFlag = 0;
 
     @Override
@@ -57,8 +59,6 @@ public class Robot extends TimedRobot {
         RobotMap.leftfollower.setInverted(InvertType.FollowMaster);
         RobotMap.candrive.setRightSideInverted(false);
 
-        //Smart Dashboard
-       // SmartDashboard.putNumber("Gyro Angle", gyro.getAngle(());
         oi = new OI();
         hatchsystem = new HatchSystem();
         drivesystem = new DriveSystem();
@@ -69,6 +69,7 @@ public class Robot extends TimedRobot {
         reversesystempid = new ReverseSystemPID();
         gripperclawpid = new GripperClawPID();
 
+        ledcontrolsystem = new LedControlSystem();
         gyro = new Gyro();
 
 
@@ -119,12 +120,16 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
+        Notifier followernotifier = new Notifier(drivesystem::followPath);
         Scheduler.getInstance().run();
-       // followernotifier.stop();
+        followernotifier.stop();
         RobotMap.leftmotor.set(0);
         RobotMap.rightmotor.set(0);
+        gyro.zeroGyro();
         gyro.updateGyro();
-        double yawAngle = gyro.getAngle();
+        gyro.setRotation(0);
+
+        //double yawAngle = gyro.getAngle();
 
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
@@ -134,6 +139,8 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        gyro.updateGyro();
+        SmartDashboard.putNumber("Rotation", gyro.getRotation());
         SmartDashboard.putNumber("Angle", gyro.getAngle());
         }
 

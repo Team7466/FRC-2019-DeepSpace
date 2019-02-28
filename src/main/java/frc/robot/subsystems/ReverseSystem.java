@@ -5,13 +5,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class ReverseSystem extends Subsystem {
 
     public static void reversegoback(){
-        RobotMap.reversemotor.set(-1);    }
+        RobotMap.reversemotor1.set(-1);    
+        //RobotMap.reversemotor2.set(-1);    
+    }
 
     public static void reversegofront(){                                                                                                                                                                                                                                                                                                
-        RobotMap.reversemotor.set(1);
+        RobotMap.reversemotor1.set(1);
+        //RobotMap.reversemotor2.set(1);
         }
     public static void reversedefaultcommand(){
-        RobotMap.reversemotor.set(0);
+        RobotMap.reversemotor1.set(0);
     }
     public void initDefaultCommand() {
         setDefaultCommand(new ReverseGoBackCommand());

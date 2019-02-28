@@ -8,7 +8,7 @@ public class ReverseSystemPID extends PIDSubsystem {
     public ReverseSystemPID() {
         super("Reverse Encoder",Constants.Reverse_P, Constants.Reverse_I, Constants.Reverse_D);
         setAbsoluteTolerance(0.01);
-        getPIDController().setContinuous(true);
+        getPIDController().setContinuous(false);
         // enable() - Enables the PID controller.
     }
 
@@ -30,7 +30,7 @@ public class ReverseSystemPID extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-        RobotMap.reversemotor.pidWrite(-output);
+        RobotMap.reversemotor1.pidWrite(-output);
         //RobotMap.reversemotor2.pidWrite(-output);
         //This is for second mreverse motor
     }

@@ -8,7 +8,7 @@ public class ElevatorSystemPID extends PIDSubsystem {
   public ElevatorSystemPID() {
       super("Elevator Encoder",Constants.Elevator_P,Constants.Elevator_I, Constants.Elevator_D);
       setAbsoluteTolerance(0.1);
-      getPIDController().setContinuous(true);
+      getPIDController().setContinuous(false);
       // enable() - Enables the PID controller.
   }
 

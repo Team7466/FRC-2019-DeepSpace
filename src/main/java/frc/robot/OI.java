@@ -45,7 +45,6 @@ public class OI {
     Button Twelfe = new JoystickButton(extreme, 12);
 
     OI() {
-
-        
+        X1.whileHeld(new LedCommand());
     }
 }

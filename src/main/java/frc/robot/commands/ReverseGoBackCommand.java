@@ -7,7 +7,8 @@ public class ReverseGoBackCommand extends Command {
     public ReverseGoBackCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.reversesystem);    }
+        requires(Robot.reversesystem);    
+    }
 
     // Called just before this Command runs the first time
     protected void initialize() {
