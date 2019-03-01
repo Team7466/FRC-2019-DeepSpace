@@ -30,8 +30,8 @@ public class ElevatorSystemPID extends PIDSubsystem {
   protected void usePIDOutput(double output) {
       // Use output to drive your system, like a motor
       // e.g. yourMotor.set(output);
-      RobotMap.elevatormotor.pidWrite(-output);
-      //RobotMap.reversemotor2.pidWrite(-output);
-      //This is for second mreverse motor
-  }
+      RobotMap.elevatormotor1.pidWrite(output);
+      RobotMap.elevatormotor2.pidWrite(output);
+      RobotMap.elevatormotor3.pidWrite(output);
+      }
 }

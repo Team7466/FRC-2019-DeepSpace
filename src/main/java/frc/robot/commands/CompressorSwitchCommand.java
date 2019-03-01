@@ -33,6 +33,4 @@ public class CompressorSwitchCommand extends Command {
 	 protected void interrupted() {
 	    	end();
 	    }
-
-
 	}
