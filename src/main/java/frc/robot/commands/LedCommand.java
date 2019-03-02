@@ -4,7 +4,7 @@ import frc.robot.Robot;
 
 public class LedCommand extends Command {
     public LedCommand() {
-        //requires(Robot.ledcontrolsystem);
+        requires(Robot.ledcontrolsystem);
     }
 
 
@@ -14,7 +14,7 @@ public class LedCommand extends Command {
      */
     @Override
     protected void initialize() {
-       // Robot.ledcontrolsystem.changeMode("1");
+       Robot.ledcontrolsystem.changeMode("1");
     }
 
 
@@ -24,7 +24,7 @@ public class LedCommand extends Command {
      */
     @Override
     protected void execute() {
-
+        Robot.ledcontrolsystem.changeMode("2");
         /*if (x == 1){
             Robot.ledSystem.changeMode("Fade");
         }

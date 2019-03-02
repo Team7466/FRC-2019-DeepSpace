@@ -20,9 +20,16 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
 
     protected void execute() {
-        Robot.drivesystem.drivefunc(OI.xbox, Constants.drive_speed);
+        if(Robot.oi.RB1.get()) {
+    		Robot.drivesystem.drivefunc(Robot.oi.xbox,0.6);
+    	}
+    	else if(Robot.oi.LB1.get()) {
+    		Robot.drivesystem.drivefunc(Robot.oi.xbox,1);
+    	}
+    	else {
+    		Robot.drivesystem.drivefunc(Robot.oi.xbox,0.75);
+    	}
     }
-
     // Make this return true when this Command no longer needs to run execute()
 
     protected boolean isFinished() {

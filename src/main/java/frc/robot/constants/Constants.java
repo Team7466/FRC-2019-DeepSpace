@@ -25,4 +25,8 @@ public class Constants {
     public static final double Claw_P = 0.1;
     public static final double Claw_I = 0.1;
     public static final double Claw_D = 0.1;
+    //pf
+    public static String Pathname;
+    public static String Pathdirl;
+    public static String Pathdirr;
 }

@@ -2,12 +2,12 @@ package frc.robot.commands;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class GripperIntakeInCommand extends Command {
+public class ElevatorManuelUp extends Command {
 
-    public GripperIntakeInCommand() {
+    public ElevatorManuelUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(Robot.grippersystem);    
+        requires(Robot.elevatorsystem);    
     }
 
     // Called just before this Command runs the first time
@@ -16,7 +16,7 @@ public class GripperIntakeInCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    Robot.grippersystem.intakein();
+    Robot.elevatorsystem.elevatorup();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -26,7 +26,7 @@ public class GripperIntakeInCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        Robot.grippersystem.intakedefaultcommand();
+        Robot.elevatorsystem.elevatordefaultcommand();
     }
     protected void interrupted() {
     	end();

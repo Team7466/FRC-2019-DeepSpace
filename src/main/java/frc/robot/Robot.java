@@ -1,7 +1,8 @@
 package frc.robot;
 import frc.robot.RobotMap;
 import frc.robot.constants.Constants;
-import frc.robot.libs.Gyro;
+import frc.robot.libs.CyVision;
+//import frc.robot.libs.Gyro;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DriveSystem;
+import frc.robot.subsystems.ElevatorSystem;
 import frc.robot.subsystems.HatchSystem;
 import frc.robot.subsystems.LedControlSystem;
 import frc.robot.subsystems.ReverseSystem;
@@ -17,6 +19,8 @@ import frc.robot.subsystems.ElevatorSystemPID;
 import frc.robot.subsystems.GripperClawPID;
 import frc.robot.subsystems.GripperSystem;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Notifier;
 
 
@@ -31,6 +35,7 @@ public class Robot extends TimedRobot {
     public static HatchSystem hatchsystem;
     public static GripperSystem grippersystem;
     public static ReverseSystem reversesystem;
+    public static ElevatorSystem elevatorsystem;
 
 
     //PID Systems
@@ -39,8 +44,13 @@ public class Robot extends TimedRobot {
     public static GripperClawPID gripperclawpid;
     
     //Sensors
-    public static Gyro gyro;
+    public static ADXRS450_Gyro gyro;
     public static LedControlSystem ledcontrolsystem;
+    public static CyVision cyvision;
+    public static double cyvisionangle;
+    public static double currentAngle;
+    public static double visionAngle;
+
     public static int compressorSwitchFlag = 0;
 
     @Override
@@ -64,14 +74,17 @@ public class Robot extends TimedRobot {
         drivesystem = new DriveSystem();
         grippersystem = new GripperSystem();
         reversesystem = new ReverseSystem();
+        elevatorsystem = new ElevatorSystem();
 
         elevatorsystempid = new ElevatorSystemPID();
         reversesystempid = new ReverseSystemPID();
         gripperclawpid = new GripperClawPID();
 
         ledcontrolsystem = new LedControlSystem();
-        gyro = new Gyro();
+        gyro = new ADXRS450_Gyro();
+        cyvision = new CyVision();
 
+        cyvision.visionStarter.setBoolean(false);    
 
         //Reverse Encoder Code
         RobotMap.reverseencoder.setMaxPeriod(.1);
@@ -85,7 +98,12 @@ public class Robot extends TimedRobot {
 
         
     }
-
+    @Override
+    public void robotPeriodic() {
+      //currentAngle = gyro.getAngle();
+      visionAngle = cyvision.angle.getDouble(0);
+    }
+  
     @Override
     public void disabledInit() {
     }
@@ -125,10 +143,11 @@ public class Robot extends TimedRobot {
         followernotifier.stop();
         RobotMap.leftmotor.set(0);
         RobotMap.rightmotor.set(0);
+        /*
         gyro.zeroGyro();
         gyro.updateGyro();
         gyro.setRotation(0);
-
+*/
         //double yawAngle = gyro.getAngle();
 
         // This makes sure that the autonomous stops running when
@@ -139,9 +158,9 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        gyro.updateGyro();
-        SmartDashboard.putNumber("Rotation", gyro.getRotation());
-        SmartDashboard.putNumber("Angle", gyro.getAngle());
+        //gyro.updateGyro();
+        //SmartDashboard.putNumber("Gyro Rotation", gyro.getRotation());
+        //SmartDashboard.putNumber("Gyro Angle", gyro.getAngle());
         }
 
     @Override

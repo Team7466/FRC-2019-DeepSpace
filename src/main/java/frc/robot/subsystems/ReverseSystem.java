@@ -13,13 +13,16 @@ public class ReverseSystem extends Subsystem {
         RobotMap.reversemotor1.set(1);
         RobotMap.reversemotor2.set(1);
         }
+
     public static void reversedefaultcommand(){
         RobotMap.reversemotor1.set(0);
         RobotMap.reversemotor2.set(0);
 
     }
+
     public void initDefaultCommand() {
         setDefaultCommand(new ReverseGoBackCommand());
         setDefaultCommand(new ReverseGoFrontCommand());
-    }                                                                                   
+    }       
+
 }

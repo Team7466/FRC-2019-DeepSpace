@@ -1,5 +1,7 @@
 package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -11,8 +13,13 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import jaci.pathfinder.PathfinderFRC;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.followers.EncoderFollower;
+import frc.robot.constants.Constants;
 public class RobotMap {
-
+/**
+public static I2C getGyro() {
+    return gyro;
+}
+*/
     //Pathfinder Configuration
     public static Trajectory left;
     public static Trajectory right;
@@ -24,7 +31,10 @@ public class RobotMap {
 
     //Encoders Sensors&Other Usefull Devices
     public static Counter clawcounter = new Counter(new DigitalInput(1));
-    public static I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
+    //public static I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
+    //This is for MPU6050 gyro
+
+    public static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
     public static Encoder reverseencoder = new Encoder(2, 3);
     public static Encoder elevatorencoder = new Encoder(4, 5);
 
@@ -72,8 +82,8 @@ public class RobotMap {
     /* This field is used to detect faulty sensors in the system*/
     static{
         try {
-            left = PathfinderFRC.getTrajectory("Test"+".left");
-            right = PathfinderFRC.getTrajectory("Test"+".right");
+            left = PathfinderFRC.getTrajectory(Constants.Pathname+".left");
+            right = PathfinderFRC.getTrajectory(Constants.Pathname+".right");
             leftencoderfollower= new EncoderFollower(left);
             rightencoderfollower = new EncoderFollower(right);
         } catch (Exception e) {
